@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:background="#843687">
+
+
+    <TextView
+        android:id="@+id/news"
+        android:layout_width="30pt"
+        android:layout_height="35pt"
+        android:gravity="center"
+        android:text="O's Turn"
+        android:textSize="50sp" />
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/cell_1"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/cell_2"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/cell_3"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/cell_4"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/cell_5"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/cell_6"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/cell_7"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/cell_8"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/cell_9"
+            android:layout_width="30pt"
+            android:layout_height="35pt"
+            android:layout_margin="3pt"
+            android:backgroundTint="#95bec2"
+            android:onClick="tilePressed"
+            android:textSize="50sp"
+            android:text="" />
+    </TableRow>
+</TableLayout>
