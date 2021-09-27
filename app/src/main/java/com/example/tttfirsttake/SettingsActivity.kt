@@ -13,7 +13,7 @@ class SettingsActivity : AppCompatActivity() {
 
         autoResetSwitch.isChecked = MainActivity.autoReset
 
-        autoResetSwitch.setOnCheckedChangeListener { cb, b ->
+        autoResetSwitch.setOnCheckedChangeListener { _, _ ->
             MainActivity.autoReset = autoResetSwitch.isChecked
         }
 

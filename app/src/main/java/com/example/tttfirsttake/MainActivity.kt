@@ -5,15 +5,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.Display
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
-import java.security.acl.NotOwnerException
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,14 +26,11 @@ class MainActivity : AppCompatActivity() {
             autoReset = pref.getBoolean("autoReset", false)
             val p1temp = pref.getString("p1", "")?.split(" ")
             val p2temp = pref.getString("p2", "")?.split(" ")
-
-
+            
             if (p1temp != null && p2temp != null){
                 for (i in p1temp.subList(0, p1temp.size - 1)) p1tiles.add(i.toInt())
                 for (i in p2temp.subList(0, p2temp.size - 1)) p2tiles.add(i.toInt())
             }
-
-
 
         } catch (e: Exception){
             print(e)
@@ -46,9 +40,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // SET WIDGET FUNCTION
-        reset.setOnClickListener {
-            reset()
-        }
+        reset.setOnClickListener { reset() }
 
         settings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
@@ -82,18 +74,18 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun logic(c: Int, s: Button){
+    private fun logic(c: Int, b: Button){
 
         if (c in p1tiles || c in p2tiles) {
             Toast.makeText(this, "Slot Occupied!", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val news: TextView = findViewById<TextView>(R.id.news)
+
         news.text = if (!turn1) "O's Turn" else "X's Turn"
 
         if (turn1) p1tiles.add(c) else p2tiles.add(c)
-        s.text = if (turn1) "O" else "X"
+        b.text = if (turn1) "O" else "X"
 
         if (checkForWin(if (turn1) p1tiles else p2tiles)) {
             news.text = if (turn1) "O's win!" else "X's win!"
@@ -104,15 +96,15 @@ class MainActivity : AppCompatActivity() {
             showResetDialog("Tie Game!")
             return
         }
+
         turn1 = !turn1
     }
 
     // Just to make checking easier
     private class ArrayCheck(private var nums: ArrayList<Int>){
         fun all(vararg n: Int): Boolean{
-            for (i in n){
+            for (i in n)
                 if (i !in nums) return false
-            }
             return true
         }
     }
@@ -151,7 +143,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun reset(){
         turn1 = true
-        val news: TextView = findViewById<TextView>(R.id.news)
         news.text = "O's Turn"
         p1tiles.clear()
         p2tiles.clear()
@@ -196,15 +187,14 @@ class MainActivity : AppCompatActivity() {
             if (i in p1tiles) b.text = "O"
             else if (i in p2tiles) b.text = "X"
         }
-        val news: TextView = findViewById<TextView>(R.id.news)
         news.text = if (turn1) "O's Turn" else "X's Turn"
 
     }
 
-    private fun lockButtons(bool: Boolean) {
+    private fun lockButtons(locked: Boolean) {
         for (i in 0..8){
             val b: Button = findViewById<Button>(R.id.cell_1 + i)
-            b.isEnabled = !bool
+            b.isEnabled = !locked
         }
     }
 
