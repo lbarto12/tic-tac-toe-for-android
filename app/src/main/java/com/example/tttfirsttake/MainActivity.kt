@@ -19,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         setTitle("Tic Tac Toe")
 
 
-        // LOAD FROM PREFERENCES
+        // LOAD FROM PREFERENCES -> Uses app preferences to save data:
+        //      -> Slots occupied are stored as strings and split using " " as a delimiter
+        //      -> Loads who's turn it is and auto reset status as well
         try {
             val pref = getPreferences(MODE_PRIVATE)
             turn1 = pref.getBoolean("turn1", true)
@@ -36,12 +38,14 @@ class MainActivity : AppCompatActivity() {
             print(e)
         }
 
+        // Updates UI based on loaded prefs
         updateFromRefresh()
 
 
-        // SET WIDGET FUNCTION
+        // I know this can be done in the XML but I like it being here
         reset.setOnClickListener { reset() }
 
+        // Link settings button to new activity -> See SettingsActivity
         settings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
@@ -54,10 +58,25 @@ class MainActivity : AppCompatActivity() {
     private var turn1: Boolean = true
 
 
+    /*
+    * A NOTE ABOUT AUTO RESET:
+    *
+    *       I took some slight creative liberty in making the end-game process,
+    *       The 'Toast' only occurs when auto-reset is enabled. When enabled, the board
+    *       resets and the program toasts to whomever won the round.
+    *
+    *       if auto-reset is disabled, then a dialogue box will show instead, asking
+    *       if the player would like to reset the game. If 'NO' is selected, buttons on
+    *       the game board will be disabled; and the player may view the board of the
+    *       previous game. When reset is pressed, the buttons unlock, and the board is cleared.
+    * */
     companion object { var autoReset: Boolean = false }
 
+
+    // Runs when a tile is pressed -> Linked to buttons by 'onClick' attr in XML
     fun tilePressed(v: View) {
         val sel: Button = v as Button
+
 
         logic(when(sel.id){
             R.id.cell_1 -> 0
@@ -74,6 +93,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /*
+     * Runs Logic for:
+     *      - Slots Already Occupied: 102
+     */
     private fun logic(c: Int, b: Button){
 
         if (c in p1tiles || c in p2tiles) {
