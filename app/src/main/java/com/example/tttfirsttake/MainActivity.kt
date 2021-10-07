@@ -1,5 +1,6 @@
 package com.example.tttfirsttake
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,6 +12,15 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception
+
+/*
+*
+* A few notes:
+*
+* I watched your 'hints' video and noticed you used bindings to access elements,
+* it seemed to work for me with just importing import kotlinx.android.synthetic.main.activity_main.*
+*
+* */
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,20 +86,7 @@ class MainActivity : AppCompatActivity() {
     // Runs when a tile is pressed -> Linked to buttons by 'onClick' attr in XML
     fun tilePressed(v: View) {
         val sel: Button = v as Button
-
-
-        logic(when(sel.id){
-            R.id.cell_1 -> 0
-            R.id.cell_2 -> 1
-            R.id.cell_3 -> 2
-            R.id.cell_4 -> 3
-            R.id.cell_5 -> 4
-            R.id.cell_6 -> 5
-            R.id.cell_7 -> 6
-            R.id.cell_8 -> 7
-            R.id.cell_9 -> 8
-            else -> -1
-        }, sel)
+        logic(sel.id - R.id.cell_1, sel)
 
     }
 
